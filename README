@@ -1,0 +1,84 @@
+=head1 NAME
+
+wordpress_backup - backs up a wordpress instance.
+
+=over 4
+ 
+=item * B<NOTE> unless you provide -d the data files will be created in the current working directory.
+
+=item * B<Note> The script expect to find a file called ~/.wordpress_login and will fail if it can't.
+
+=back
+
+=head2 Warning
+
+=over 4
+
+=item * If a file with a given name exists it'll be overwritten.
+
+=item * Don't forget to escape special characters like @ in the password
+   variable.  Example:   q6@7mb   =>  q6\@7mb
+
+=back
+
+=head2 Thanks
+
+to the blogger behind 'unixwayoflife', who put his version on his blog at
+ http://unixwayoflife.wordpress.com/2008/11/08/automated-wordpress-com-backup/ .  
+
+=head2 config file reference
+
+The YAML file follows the following format;
+
+ ---
+ username: my_wordpress_username
+ password: my_wordpress_password
+ url: url_to_wordpress_site
+ author: e.g. 'all' or 'john'
+
+=head2 TODO
+
+=over 2
+
+=item implement fix for 'wide character' bug in UTF8 handling in www::mechanize
+
+=item implement 'silent mode' for no output
+
+=item implement optional attributes in config file
+
+	optional attr: silent specification
+	optional attr: file prefix specification
+
+=item fix logout code
+
+=back
+
+=head1 USAGE
+
+    wordpress_backup  [-d] specify directory name to create backup file in 
+
+=head1 OPTIONS
+
+=over
+
+=item  -d[ir] [=] <dir>
+
+Specify directory to select the file from [default: dir.default]
+
+
+=for Euclid:
+    dir.type:    string 
+    dir.default: './'
+    dir.type.error: must be a valid directory
+
+
+=item --version
+
+=item --usage
+
+=item --help
+
+=item --man
+
+Print the usual program information
+

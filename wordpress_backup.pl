@@ -1,6 +1,4 @@
 #!/usr/bin/perl 
-# template script to run on linux/cluster machines with embedded documentation and command parsing
-
 
 use v5.10; #make use of the say command and other nifty perl 10.0 onwards goodness; 
 			 #should be able to drop to 10.0 or above OK
@@ -81,21 +79,29 @@ __END__
 
 wordpress_backup - backs up a wordpress instance.
 
+=over 4
  
- *NOTE* unless you provide -d the data files will be created in the current working directory.
+=item * B<NOTE> unless you provide -d the data files will be created in the current working directory.
 
-<b> Note</b> The script expect to find a file called ~/.wordpress_login and will fail if it can't.
+=item * B<Note> The script expect to find a file called ~/.wordpress_login and will fail if it can't.
+
+=back
 
 =head2 Warning
 
-1. If a file with a given name exists it'll be overwritten.
-2. Don't forget to escape special characters like @ in the password
+=over 4
+
+=item * If a file with a given name exists it'll be overwritten.
+
+=item * Don't forget to escape special characters like @ in the password
    variable.  Example:   q6@7mb   =>  q6\@7mb
+
+=back
 
 =head2 Thanks
 
-Thanks to the blogger behind 'unixwayoflife', who put his version on his blog
- (http://unixwayoflife.wordpress.com/2008/11/08/automated-wordpress-com-backup/).  
+to the blogger behind 'unixwayoflife', who put his version on his blog at
+ http://unixwayoflife.wordpress.com/2008/11/08/automated-wordpress-com-backup/ .  
 
 =head2 config file reference
 
@@ -107,6 +113,22 @@ The YAML file follows the following format;
  url: url_to_wordpress_site
  author: e.g. 'all' or 'john'
 
+=head2 TODO
+
+=over 2
+
+=item implement fix for 'wide character' bug in UTF8 handling in www::mechanize
+
+=item implement 'silent mode' for no output
+
+=item implement optional attributes in config file
+
+	optional attr: silent specification
+	optional attr: file prefix specification
+
+=item fix logout code
+
+=back
 
 =head1 USAGE
 
@@ -140,4 +162,5 @@ Print the usual program information
 =back
 
 =begin remainder of documentation here. . .
+
 
